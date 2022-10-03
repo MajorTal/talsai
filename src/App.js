@@ -1,28 +1,28 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import ImageGallery from 'react-image-gallery';
 import React from 'react';
 
-function Welcome(props) {
-  return <h1>Hello, {props.name}, {props.name2}</h1>;
-}
+// function Welcome(props) {
+//   return <h1>Hello, {props.name}, {props.name2}</h1>;
+// }
 
 const images = [
   {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-Appelboy7-zombie.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-Appelboy7-zombie.png',
+    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-Appelboy7.png',
+    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-Appelboy7.png',
   },
   {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-lilahav-zombie.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-lilahav-zombie.png',
+    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-lilahav.png',
+    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-lilahav.png',
   },
   {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-EdenLevov-zombie.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-EdenLevov-zombie.png',
+    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-EdenLevov.png',
+    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-EdenLevov.png',
   },
   {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-nuchem_green-zombie.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-nuchem_green-zombie.png',
+    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-nuchem_green.png',
+    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-nuchem_green.png',
   },
 ];
 
@@ -43,7 +43,7 @@ class App extends React.Component {
       slideDuration: 450,
       slideInterval: 2000,
       slideOnThumbnailOver: false,
-      thumbnailPosition: 'bottom',
+      thumbnailPosition: 'top',
       showVideo: {},
       useWindowKeyDown: true,
     };
@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and raves to reload.
@@ -68,9 +68,25 @@ class App extends React.Component {
           <h2>It is {new Date().toLocaleTimeString()}.</h2>
           <Welcome name="Sara" name2="asd"/>
           <Welcome name="Cahal" />
-        </header>
+        </header> */}
         <body>
-          <ImageGallery items={images} />;
+          <ImageGallery 
+            items={images}
+            infinite={this.state.infinite}
+            showBullets={this.state.showBullets}
+            showFullscreenButton={this.state.showFullscreenButton && this.state.showGalleryFullscreenButton}
+            showPlayButton={this.state.showPlayButton && this.state.showGalleryPlayButton}
+            showThumbnails={this.state.showThumbnails}
+            showIndex={this.state.showIndex}
+            showNav={this.state.showNav}
+            isRTL={this.state.isRTL}
+            thumbnailPosition={this.state.thumbnailPosition}
+            slideDuration={parseInt(this.state.slideDuration)}
+            slideInterval={parseInt(this.state.slideInterval)}
+            slideOnThumbnailOver={this.state.slideOnThumbnailOver}
+            additionalClass="app-image-gallery"
+            useWindowKeyDown={this.state.useWindowKeyDown}
+          />;
         </body>
       </div>
     );
