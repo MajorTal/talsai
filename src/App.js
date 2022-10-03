@@ -7,24 +7,19 @@ import React from 'react';
 //   return <h1>Hello, {props.name}, {props.name2}</h1>;
 // }
 
-const images = [
-  {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-Appelboy7.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-Appelboy7.png',
-  },
-  {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-lilahav.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-lilahav.png',
-  },
-  {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-EdenLevov.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-EdenLevov.png',
-  },
-  {
-    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-nuchem_green.png',
-    thumbnail: 'https://tal-private-zombie.s3.amazonaws.com/zombies-nuchem_green.png',
-  },
-];
+const prefix = 'https://tal-private-zombie.s3.amazonaws.com/zombies/rYvqsftACOY/';
+const number_of_images_per_page = 16;
+
+let images = [];
+
+for (let i in [...Array(number_of_images_per_page).keys()]) {
+  images.push({
+    original: prefix + i + ".png",
+    thumbnail: prefix + i + "-thumb.png",
+  })
+};
+
+console.log(images);
 
 class App extends React.Component {
   constructor() {
