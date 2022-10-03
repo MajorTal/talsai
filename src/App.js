@@ -8,7 +8,7 @@ function Welcome(props) {
 
 const images = [
   {
-    original: 'https://picsum.photos/id/1018/1000/600/',
+    original: 'https://tal-private-zombie.s3.amazonaws.com/zombies-MeytalinkaVan.png',
     thumbnail: 'https://picsum.photos/id/1018/250/150/',
   },
   {
