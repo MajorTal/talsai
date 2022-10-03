@@ -2,6 +2,11 @@
 import './App.css';
 import ImageGallery from 'react-image-gallery';
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 // function Welcome(props) {
 //   return <h1>Hello, {props.name}, {props.name2}</h1>;
@@ -21,7 +26,17 @@ for (let i in [...Array(number_of_images_per_page).keys()]) {
   })
 };
 
-console.log(images);
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
 
 class App extends React.Component {
   constructor() {
@@ -52,6 +67,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Router>
+          <div>
+            <Routes>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/users" element={<Users/>}/>
+              <Route exact path="/" element={<Home/>}/>
+            </Routes>
+          </div>
+    </Router>
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -65,12 +89,12 @@ class App extends React.Component {
           >
             Learn React
           </a>
-          <h1>Hello, world</h1>
           <h2>It is {new Date().toLocaleTimeString()}.</h2>
           <Welcome name="Sara" name2="asd"/>
           <Welcome name="Cahal" />
         </header> */}
         <body>
+          {/* <h1>Hello, world</h1> */}
           <ImageGallery 
             items={images}
             infinite={this.state.infinite}
