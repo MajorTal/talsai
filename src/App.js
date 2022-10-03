@@ -16,6 +16,8 @@ for (let i in [...Array(number_of_images_per_page).keys()]) {
   images.push({
     original: prefix + i + ".png",
     thumbnail: prefix + i + "-thumb.png",
+    // originalTitle: "asd",
+    // originalAlt: "aaa",
   })
 };
 
@@ -35,13 +37,17 @@ class App extends React.Component {
       showGalleryPlayButton: true,
       showNav: true,
       isRTL: false,
-      slideDuration: 450,
+      slideDuration: 2000,
       slideInterval: 2000,
       slideOnThumbnailOver: false,
       thumbnailPosition: 'top',
       showVideo: {},
       useWindowKeyDown: true,
+      autoPlay: true,
     };
+  }
+  componentDidMount(){
+    document.title = "Zombies"
   }
   render() {
     return (
