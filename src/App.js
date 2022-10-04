@@ -7,6 +7,7 @@ import {
   Route,
   useParams
 } from "react-router-dom";
+import { Share } from 'react-twitter-widgets'
 
 
 const domain = 'https://tal-private-zombie.s3.amazonaws.com/zombies/';
@@ -20,6 +21,7 @@ function GetImages(prefix){
     images.push({
       original: domain + prefix + "/" + i + ".png",
       thumbnail: domain + prefix + "/" + i + "-thumb.png",
+      originalTitle: "asd",
     })
   };
   return images;  
@@ -29,7 +31,6 @@ function Home() {
   return <h2>Zombies are cool!</h2>;
 }
 
-
 function Zombie() {
   // We can use the `useParams` hook here to access the dynamic pieces of the URL.
   let { id } = useParams();
@@ -38,7 +39,8 @@ function Zombie() {
 
   return (
     <div>
-    <ImageGallery items={items} />
+      <Share url="https://talsai.com" options={{ size: "large", text: "Check out my Zombies!" }} />
+    <ImageGallery items={items} autoplay={true} onErrorImageURL="https://publicdomainvectors.org/photos/Zombie-Head.png"/>
   </div>
   );
 }
@@ -66,3 +68,7 @@ class App extends React.Component {
 }
 
 export default App;
+
+// Todo: Twitter button
+// Todo: in case of error
+// Todo: add caption here? https://stackoverflow.com/a/65165218/78234
