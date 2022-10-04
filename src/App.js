@@ -12,18 +12,23 @@ import {
 //   return <h1>Hello, {props.name}, {props.name2}</h1>;
 // }
 
-const prefix = 'https://tal-private-zombie.s3.amazonaws.com/zombies/rYvqsftACOY/';
+// const prefix = 'https://tal-private-zombie.s3.amazonaws.com/zombies/rYvqsftACOY/';
+const prefix = 'https://tal-private-zombie.s3.amazonaws.com/zombies/h2sOejM8Nks/';
 const number_of_images_per_page = 16;
 
-let images = [];
 
-for (let i in [...Array(number_of_images_per_page).keys()]) {
-  images.push({
-    original: prefix + i + ".png",
-    thumbnail: prefix + i + "-thumb.png",
-    // originalTitle: "asd",
-    // originalAlt: "aaa",
-  })
+function GetImages(prefix){
+  let images = [];
+
+  for (let i in [...Array(number_of_images_per_page).keys()]) {
+    images.push({
+      original: prefix + i + ".png",
+      thumbnail: prefix + i + "-thumb.png",
+      // originalTitle: "asd",
+      // originalAlt: "aaa",
+    })
+  };
+  return images;  
 };
 
 function Home() {
@@ -96,7 +101,7 @@ class App extends React.Component {
         <body>
           {/* <h1>Hello, world</h1> */}
           <ImageGallery 
-            items={images}
+            items={GetImages(prefix)}
             infinite={this.state.infinite}
             showBullets={this.state.showBullets}
             showFullscreenButton={this.state.showFullscreenButton && this.state.showGalleryFullscreenButton}
