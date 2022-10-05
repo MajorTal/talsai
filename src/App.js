@@ -5,9 +5,10 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useParams
+  useParams,
+  Link
 } from "react-router-dom";
-import { Share } from 'react-twitter-widgets'
+import { Share, Tweet, Timeline } from 'react-twitter-widgets'
 
 
 const domain = 'https://tal-private-zombie.s3.amazonaws.com/zombies/';
@@ -28,8 +29,33 @@ function GetImages(prefix){
 };
 
 function Home() {
-  return <h2>Zombies are cool!</h2>;
+  return (
+    <div>
+      <h2>ברוכים הבאים לבית החדש שלי</h2>
+      <ul>
+          <li>
+            <Link to="/zombies">Zombies!</Link>
+          </li>
+      </ul>
+      <Timeline
+        dataSource={{ sourceType: "profile", screenName: "taltimes2" }}
+        options={{ width: "400", }}
+      />
+    </div>
+  );
 }
+
+function Zombies() {
+  return (
+    <div>
+      <h2>Zombies are cool!</h2>
+      <Tweet tweetId="1577372692604403713" />
+    </div>
+  );
+}
+
+
+
 
 function Zombie() {
   // We can use the `useParams` hook here to access the dynamic pieces of the URL.
@@ -40,7 +66,7 @@ function Zombie() {
   return (
     <div>
       <Share url="https://talsai.com" options={{ size: "large", text: "Check out my Zombies!" }} />
-    <ImageGallery items={items} autoplay={true} onErrorImageURL="https://publicdomainvectors.org/photos/Zombie-Head.png"/>
+      <ImageGallery items={items} autoplay={true} onErrorImageURL="https://publicdomainvectors.org/photos/Zombie-Head.png"/>
   </div>
   );
 }
@@ -58,6 +84,7 @@ class App extends React.Component {
           <div>
             <Routes>
               <Route path="/zombies/:id" element={<Zombie />} />
+              <Route exact path="/zombies" element={<Zombies/>}/>
               <Route exact path="/" element={<Home/>}/>
             </Routes>
           </div>
