@@ -8,7 +8,7 @@ import {
   useParams,
   Link
 } from "react-router-dom";
-import { Share, Tweet, Timeline } from 'react-twitter-widgets'
+import { Share, Tweet, Timeline, Follow } from 'react-twitter-widgets'
 
 
 const domain = 'https://tal-private-zombie.s3.amazonaws.com/zombies/';
@@ -64,10 +64,21 @@ function Zombie() {
   console.log(items);
 
   return (
-    <div>
-      <Share url="https://talsai.com" options={{ size: "large", text: "Check out my Zombies!" }} />
-      <ImageGallery items={items} autoplay={true} onErrorImageURL="https://publicdomainvectors.org/photos/Zombie-Head.png"/>
-  </div>
+    <div className="App">
+        <header className="App-header">
+        <Share url="https://taltal.im" options={{ size: "large", text: "Check out my Zombie!", via: "taltimes2"}} />
+        <Follow username="taltimes2" options={{ size: "large"}}/>
+        </header>
+        <div className="App-body">
+          <ImageGallery 
+            items={items} 
+            thumbnailPosition={"top"} 
+            autoplay={true} 
+            onErrorImageURL="https://publicdomainvectors.org/photos/Zombie-Head.png"
+            defaultImage={"https://publicdomainvectors.org/photos/Zombie-Head.png"}  
+          />
+        </div>
+      </div>
   );
 }
 
@@ -96,6 +107,8 @@ class App extends React.Component {
 
 export default App;
 
-// Todo: Twitter button
-// Todo: in case of error
-// Todo: add caption here? https://stackoverflow.com/a/65165218/78234
+// Todos:
+// In case of 404 error
+// Add caption here? https://stackoverflow.com/a/65165218/78234
+// Link to specific image on page
+// Bootstrap
