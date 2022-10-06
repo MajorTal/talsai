@@ -23,6 +23,13 @@ const domain = 'https://tal-private-zombie.s3.amazonaws.com/zombies/';
 const number_of_images_per_page = 16;
 
 
+
+// function OnbulletOnClick(item, itemIndex, currentIndex) {
+//   console.log("hi");
+// }
+
+
+
 function GetImages(prefix){
   let images = [];
 
@@ -30,7 +37,7 @@ function GetImages(prefix){
     images.push({
       original: domain + prefix + "/" + i + ".png",
       thumbnail: domain + prefix + "/" + i + "-thumb.png",
-      originalTitle: "asd",
+      // bulletOnClick: OnbulletOnClick,
     })
   };
   return images;  
@@ -67,6 +74,7 @@ function isNumeric(value) {
   return /^\d+$/.test(value);
 }
 
+
 function Zombie() {
   // We can use the `useParams` hook here to access the dynamic pieces of the URL.
   let { id } = useParams();
@@ -78,8 +86,7 @@ function Zombie() {
     return(
       <div className="App">
       <header className="App-header">
-      <Share url="https://taltal.im" options={{ size: "large", text: "Check out my Zombie!", via: "taltimes2"}} />
-      <Follow username="taltimes2" options={{ size: "large"}}/>
+      <Share  options={{ size: "large", text: "Check out my Zombie!", via: "taltimes2"}} />
       </header>
       <div className="App-body">
         <ImageGallery 
@@ -92,7 +99,6 @@ function Zombie() {
         />
       </div>
     </div>
-
     )
   }
 
@@ -146,3 +152,5 @@ export default App;
 // Add caption here? https://stackoverflow.com/a/65165218/78234
 // Link to specific image on page
 // Bootstrap
+// click on zombie in carousel
+// different link in Twitter thread
