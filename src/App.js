@@ -6,10 +6,18 @@ import {
   Routes,
   Route,
   useParams,
-  Link
+  Link,
+  useLocation,
 } from "react-router-dom";
 import { Share, Tweet, Timeline, Follow } from 'react-twitter-widgets'
 
+// A custom hook that builds on useLocation to parse
+// the query string for you.
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
 
 const domain = 'https://tal-private-zombie.s3.amazonaws.com/zombies/';
 const number_of_images_per_page = 16;
@@ -55,15 +63,40 @@ function Zombies() {
 }
 
 
-
+function isNumeric(value) {
+  return /^\d+$/.test(value);
+}
 
 function Zombie() {
   // We can use the `useParams` hook here to access the dynamic pieces of the URL.
   let { id } = useParams();
   let items = GetImages(id);
-  console.log(items);
+  let query = useQuery();
+  let number = query.get("number");
+  if (isNumeric(number) && number < number_of_images_per_page){
+    let item = [items.at(number)]
+    return(
+      <div className="App">
+      <header className="App-header">
+      <Share url="https://taltal.im" options={{ size: "large", text: "Check out my Zombie!", via: "taltimes2"}} />
+      <Follow username="taltimes2" options={{ size: "large"}}/>
+      </header>
+      <div className="App-body">
+        <ImageGallery 
+          items={item} 
+          thumbnailPosition={"top"} 
+          autoplay={false} 
+          onErrorImageURL="https://publicdomainvectors.org/photos/Zombie-Head.png"
+          defaultImage={"https://publicdomainvectors.org/photos/Zombie-Head.png"}  
+        />
+      </div>
+    </div>
+
+    )
+  }
 
   return (
+
     <div className="App">
         <header className="App-header">
         <Share url="https://taltal.im" options={{ size: "large", text: "Check out my Zombie!", via: "taltimes2"}} />
