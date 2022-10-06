@@ -85,7 +85,8 @@ function Zombie() {
         <ImageGallery 
           items={item} 
           thumbnailPosition={"top"} 
-          autoplay={false} 
+          autoplay={false}
+          showThumbnails={false}
           onErrorImageURL="https://publicdomainvectors.org/photos/Zombie-Head.png"
           defaultImage={"https://publicdomainvectors.org/photos/Zombie-Head.png"}  
         />
