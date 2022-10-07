@@ -62,13 +62,12 @@ function Home() {
 
 function Zombies() {
   return (
-    <div>
+    <div style={{'text-align': "-webkit-center"}}>
       <h2>Zombies are cool!</h2>
-      <Tweet tweetId="1577372692604403713" />
+      <Tweet tweetId="1578104320683147265" />
     </div>
   );
 }
-
 
 function isNumeric(value) {
   return /^\d+$/.test(value);
