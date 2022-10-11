@@ -1,4 +1,5 @@
 import './App.css';
+import "@aws-amplify/ui-react/styles.css";
 import ImageGallery from 'react-image-gallery';
 import React from 'react';
 import {
@@ -10,6 +11,22 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Share, Tweet, Timeline, Follow } from 'react-twitter-widgets'
+
+import {
+  withAuthenticator,
+  Button,
+  Heading,
+  Image,
+  View,
+  Card,
+} from "@aws-amplify/ui-react";
+
+// import { Authenticator } from '@aws-amplify/ui-react';
+// import '@aws-amplify/ui-react/styles.css';
+
+// import awsExports from './aws-exports';
+// Amplify.configure(awsExports);
+
 
 // A custom hook that builds on useLocation to parse
 // the query string for you.
@@ -129,7 +146,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="App">
+      <View className="App">
         <Router>
           <div>
             <Routes>
@@ -139,12 +156,12 @@ class App extends React.Component {
             </Routes>
           </div>
         </Router>
-      </div>
+      </View>
     );
   }
 }
 
-export default App;
+export default withAuthenticator(App);
 
 // Todos:
 // In case of 404 error

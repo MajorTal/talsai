@@ -1,0 +1,4 @@
+type ZombieFolders @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  FolderName: String
+}
